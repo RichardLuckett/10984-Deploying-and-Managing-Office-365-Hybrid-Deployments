@@ -1,0 +1,37 @@
+﻿## Set S2S configuration variables
+
+$spcn="*.<public_root_domain_name>.com"
+$spsite=Get-Spsite http://sharepoint.adatum.com
+$site=Get-Spsite $spsite
+$spoappid="00000003-0000-0ff1-ce00-000000000000"
+$spocontextID = (Get-MsolCompanyInformation).ObjectID
+$metadataEndpoint = "https://accounts.accesscontrol.windows.net/" + $spocontextID + "/metadata/json/1"
+
+
+## Upload the on-premises STS certificate to SharePoint Online.
+$stsCert=(Get-SPSecurityTokenServiceConfig).LocalLoginProvider.SigningCertificate
+$binCert = $stsCert.GetRawCertData()
+$credValue = [System.Convert]::ToBase64String($binCert);
+New-MsolServicePrincipalCredential -AppPrincipalId $spoappid -Type asymmetric -Usage Verify -Value $credValue
+
+
+## Add a Service Principal Name (SPN) for your domain to Azure.
+$msp = Get-MsolServicePrincipal -AppPrincipalId $spoappid
+$spns = $msp.ServicePrincipalNames
+$spns.Add("$spoappid/$spcn") 
+Set-MsolServicePrincipal -AppPrincipalId $spoappid -ServicePrincipalNames $spns
+
+
+## Register the SharePoint Online application principal object ID with SharePoint Server
+$spoappprincipalID = (Get-MsolServicePrincipal -ServicePrincipalName $spoappid).ObjectID
+$sponameidentifier = "$spoappprincipalID@$spocontextID"
+$appPrincipal = Register-SPAppPrincipal -site $site.rootweb -nameIdentifier $sponameidentifier -displayName "SharePoint Online"
+
+
+# Configure the common authentication realm
+Set-SPAuthenticationRealm -realm $spocontextID
+
+
+## Configure an Azure AD application proxy on-premises
+New-SPAzureAccessControlServiceApplicationProxy -Name "ACS" -MetadataServiceEndpointUri $metadataEndpoint -DefaultProxyGroup
+New-SPTrustedSecurityTokenIssuer -MetadataEndpoint $metadataEndpoint -IsTrustBroker:$true -Name "ACS"

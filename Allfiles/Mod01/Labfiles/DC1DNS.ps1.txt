@@ -1,0 +1,71 @@
+﻿######################################################################################################
+## 10984ADNS.ps1
+## Sets initial student-specific DNS records for the 10984A lab environment
+######################################################################################################
+
+### Set lab IP addresses and machine names
+$DCName = "LON-DC1"
+$DCip = "172.16.0.10"
+
+$DSName = "LON-DS1"
+$DSip = "172.16.0.11"
+
+$WAPName = "LON-WAP1"
+$WAPip = "172.16.0.12"
+$WAPip2 = "192.168.100.12"
+
+$EXName = "LON-EX1"
+$EXip = "172.16.0.13"
+
+$SPName = "LON-SP1"
+$SPip = "172.16.0.14"
+
+$S4BName = "LON-SFB"
+$S4Bip = "172.16.0.15"
+
+$EdgeName = "LON-EDGE"
+$Edgeip = "172.16.0.16"
+## $EdgeExip = ""
+
+ 
+
+
+#### Obtain Student host name
+
+$labhostname = read-host "Enter your unique host domain name as provided in your lab environment"
+
+
+### Create a new forward zone for the domain
+
+Add-DnsServerPrimaryZone -name $labhostname -zonefile ($labhostname + ".dns")
+
+
+#### Create Skype for Business (S4B) On-premise DNS Records
+
+### Create S4B A name Records
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name $S4BName -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "admin" -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "dialin" -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "lyncdiscoverinternal" -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "meet" -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "web-int" -A -IPv4Address $S4Bip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name $EdgeName -A -IPv4Address $Edgeip
+## Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "webconf" -A -IPv4Address $EdgeExip
+
+### Create S4B CNAME Records
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -CName "sip" -HostNameAlias ("sip.” + $labhostname)
+
+### Create S4B SRV Records
+Add-DnsServerResourceRecord -zonename $labhostname -name "_sipinternaltls2._tcp"  -TimeToLive 3600 -srv -DomainName ("sip.” + $labhostname) -Priority 0 -Weight 0 -port 5061
+
+#### Create Exchange On-premise DNS Records
+
+### Create Exchange A name Records
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name $EXName -A -IPv4Address $EXip
+Add-DnsServerResourceRecord -ZoneName $labhostname -TimeToLive 3600 -Name "mail" -A -IPv4Address $EXip
+
+
+#### Return a list of all DNS records
+Get-DnsServerResourceRecord -ZoneName $labhostname
+
+
