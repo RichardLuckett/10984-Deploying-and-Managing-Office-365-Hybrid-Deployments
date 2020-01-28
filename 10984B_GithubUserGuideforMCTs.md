@@ -101,7 +101,7 @@ To install the GitHub Desktop, perform the following steps:
 
 2.  Click **Download for Windows**.
 
-3.  When the **GitHubDesktopSetup.exe** file has downloaded, double-click the file to start the setup, or click **Run** if you receive a prompt from Internet Explorer.
+3.  When the **GitHubDesktopSetup.exe** file has downloaded, double-click the file to start the setup, or click **Run** if you receive a prompt from your browser.
 
 4.  In the **Application Install - Security Warning** dialog box, click **Install**.
 
@@ -117,7 +117,7 @@ To install Pandoc, perform the following steps:
 
 2. Select **pandoc-1.19.2-windows.msi**.
 
-3. When the **pandoc-1.19.2-windows.msi** file has downloaded, double-click the file to start the setup, or click **Run** if you receive a prompt from Internet Explorer.
+3. When the **pandoc-1.19.2-windows.msi** file has downloaded, double-click the file to start the setup, or click **Run** if you receive a prompt from your browser.
 
 4. In the **Pandoc 1.19.2 Setup** dialog, review the License Agreement, select **I accept the terms in the License Agreeement**, and then click **Install**.
 
@@ -170,7 +170,7 @@ If you want to build Word documents from Markdown files, you must [clone](https:
 
 3. In the **Clone with HTTPS** dialog box, click **Open in Desktop**.
 
-4. In the **Internet Explorer** confirmation dialog box, click **Allow** (or the equivalent for your browser).
+4. In the browser confirmation dialog box, click **Allow** (or the equivalent for your browser).
 
 5. Switch to GitHub Desktop.
 
@@ -197,7 +197,7 @@ The Windows PowerShell script, Pandoc.ps1, is in the **\\Build** folder. The fol
 1. In **File Explorer,** navigate to the folder in the repo that you cloned, such as:
 
   ```
-  ..\\Documents\\GitHub\\10993-IntegratingOn-PremisesIdentitywithAzure\\Build.
+  ..\\Documents\\GitHub\\10984-Deploying-and-Managing-Office-365-Hybrid-Deployments\\Build.
   ```
 
 2. Right-click the file **pandoc.ps1**, and then click **Run with PowerShell**.
@@ -239,14 +239,14 @@ The simplest way to make sure you know about any changes to a repo is to **watch
 
 To watch a repo, perform the following steps:
 
-1. In Internet Explorer, navigate to the repo on GitHub.
+1. In your browser, navigate to the repo on GitHub.
 
 2. Click **Watch**, and then under **Notifications**, select **Watching**.
 
 
 To quit watching a repo, perform the following steps:
 
-1. In Internet Explorer, navigate to the repo on GitHub.
+1. In your browser navigate to the repo on GitHub.
 
 2. Click **Watch**, and then under Notifications, select **Not watching**.
 
@@ -269,7 +269,7 @@ You can review and comment on changes that other users make, and Microsoft Learn
 
 #### To create a repo branch:
 
-1. In Internet Explorer, navigate to the repo on GitHub.
+1. In your browser, navigate to the repo on GitHub.
 
 2. Click **Branch : _branchname_**, and then from the **Branches** list, select the branch you want to copy.
 
@@ -282,7 +282,7 @@ You can review and comment on changes that other users make, and Microsoft Learn
 
 #### To delete a repo branch:
 
-1. In Internet Explorer, navigate to the repo on GitHub.
+1. In your browser, navigate to the repo on GitHub.
 
 2. Click **_n_ branches**, where **_n_** is the number of existing branches.
 
@@ -306,7 +306,7 @@ After you have created a Branch, you can clone the files to your local repo, upd
 
 #### To edit files and commit changes in the online repo:
 
-1. In Internet Explorer, navigate to the applicable repo on GitHub, and then select the file that you want to edit.
+1. In your browser, navigate to the applicable repo on GitHub, and then select the file that you want to edit.
 
 2. Click the **Edit this file** icon.
 
@@ -319,7 +319,7 @@ After you have created a Branch, you can clone the files to your local repo, upd
 
 #### To create a pull request:
 
-1. In Internet Explorer, navigate to the applicable repo on GitHub.
+1. In your browser, navigate to the applicable repo on GitHub.
 
 2. Click **Branch:_branchname_**, and then in the **Branches** list, select the branch for which you want to create a pull request.
 
@@ -332,7 +332,7 @@ As we noted previously, you also can comment on pull requests and proposed chang
 
 #### To review and comment on a pull request:
 
-1. In Internet Explorer, navigate to the applicable repo on GitHub.
+1. In your browser, navigate to the applicable repo on GitHub.
 
 2. Click **Pull requests _n_**, where **_n_** is the number of active pull requests.
 
@@ -343,7 +343,7 @@ As we noted previously, you also can comment on pull requests and proposed chang
 
 #### To review and comment on a commit:
 
-1. In Internet Explorer, navigate to the repo on GitHub.
+1. In your browser navigate to the repo on GitHub.
 
 2. Click **_n_ commits**, where **_n_** is the number of commits that have been submitted. If you want to review the latest commit, you can select the title/short description of the commit from file list.
 
@@ -360,7 +360,7 @@ You also can make suggestions about an overall project, by submitting an Issue o
 
 #### To submit an Issue:
 
-1. In Internet Explorer, navigate to the applicable repo on GitHub.
+1. In your browser, navigate to the applicable repo on GitHub.
 
 2. Click **Issues**, and then click **New issue**.
 
@@ -371,7 +371,7 @@ You also can make suggestions about an overall project, by submitting an Issue o
 
 #### To review and comment on an existing issue:
 
-1.  In Internet Explorer, navigate to the applicable repo on GitHub.
+1.  In your browser, navigate to the applicable repo on GitHub.
 
 2.  Click **Issues**, and then select the title of the issue that you want to review.
 
@@ -384,7 +384,7 @@ You also can make suggestions about an overall project, by submitting an Issue o
 
 #### To mention a GitHub user in a comment:
 
-1. In Internet Explorer, navigate to the applicable repo on GitHub.
+1. In your browser, navigate to the applicable repo on GitHub.
 
 2. Create your comment or issue, as described previously, and then in the **comment** text box, type **\@**, followed by the user or team name, within the comment.
 
