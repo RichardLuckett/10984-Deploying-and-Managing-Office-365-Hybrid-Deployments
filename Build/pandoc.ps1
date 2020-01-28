@@ -29,7 +29,7 @@ function AddVersionFooter{
 
 function ConvertMarkdownToWord{
     param($inputFile, $outputFile, $versionData)
-    pandoc $inputFile -o $outputFile --reference-doc=template.docx 
+    pandoc $inputFile -o $outputFile --reference-docx=template.docx 
     AddVersionFooter $outputFile $versionData
 }
 
